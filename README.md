@@ -1,5 +1,5 @@
 # Al Mossar
-Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
+Al Mossar vai ser um sistema para fazer o controle de ocupação de mesas no restaurante 
 
 ## Alunos integrantes da equipe
 
