@@ -1,5 +1,5 @@
 # Al Mossar
-Al Mossar vai ser um sistema para fazer o controle de ocupação de mesas no restaurante 
+Al Mossar vai ser um sistema para fazer o controle de ocupação de mesas em um restaurante 
 
 ## Alunos integrantes da equipe
 
