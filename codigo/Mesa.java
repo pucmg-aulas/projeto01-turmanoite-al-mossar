@@ -1,15 +1,39 @@
-import java.util.Date;
-import java.util.List;
-
 public class Mesa {
-    private int capacidade;
+    private final int id;
+    private final int capacidade;
     private boolean ocupada;
 
-    public void alocar() {
-
+    public Mesa(int id, int capacidade) {
+        this.id = id;
+        this.capacidade = capacidade;
     }
 
-    public void desalocar() {
+    public int getId() {
+        return id;
+    }
 
+    public int getCapacidade() {
+        return capacidade;
+    }
+
+    public boolean isOcupada() {
+        return ocupada;
+    }
+
+    public void ocupar() {
+        ocupada = true;
+    }
+
+    public void desocupar() {
+        ocupada = false;
+    }
+
+    @Override
+    public String toString() {
+        return "Mesa{" +
+               "id=" + id +
+               ", capacidade=" + capacidade +
+               ", ocupada=" + (ocupada ? "Sim" : "Não") +
+               '}';
     }
 }
