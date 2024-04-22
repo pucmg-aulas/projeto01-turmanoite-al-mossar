@@ -33,12 +33,12 @@ public class Main {
     System.out.println("Outro cliente chega.");
     restaurante.processarRequisicaoCliente(cliente10);
     
-    //Clientes que terminaram a refeição
+    //Clientes que liberaram a mesa
     System.out.println("Um cliente está saindo.");
     cliente4.sairDoRestaurante();
     
 
-    // Após a saída de um cliente, tentamos alocar mesa para quem estava esperando
+    //Quem estava esperando entra nas mesas que esvaziaram
     if (!restaurante.getFilaDeEspera().estaVazia()) {
       Cliente clienteEspera = restaurante.getFilaDeEspera().removerCliente();
       restaurante.processarRequisicaoCliente(clienteEspera);
