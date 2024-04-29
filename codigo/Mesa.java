@@ -1,11 +1,14 @@
 public class Mesa {
-    private final int id;
-    private final int capacidade;
+    private int id;
+    private int capacidade;
     private boolean ocupada;
+    private Cliente cliente;  // Adicionar este campo
 
     public Mesa(int id, int capacidade) {
         this.id = id;
         this.capacidade = capacidade;
+        this.ocupada = false;
+        this.cliente = null;
     }
 
     public int getId() {
@@ -26,14 +29,14 @@ public class Mesa {
 
     public void desocupar() {
         ocupada = false;
+        cliente = null;  // Limpar referência ao cliente ao desocupar
     }
 
-    @Override
-    public String toString() {
-        return "Mesa{" +
-               "id=" + id +
-               ", capacidade=" + capacidade +
-               ", ocupada=" + (ocupada ? "Sim" : "Não") +
-               '}';
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
