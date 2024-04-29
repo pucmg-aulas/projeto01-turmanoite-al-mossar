@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Iterator;
 
 public class FilaDeEspera {
     private Queue<Cliente> clientes;
@@ -13,9 +14,6 @@ public class FilaDeEspera {
         clientes.add(cliente);
     }
 
-    public void removerCliente(Cliente cliente) {
-        clientes.remove(cliente);
-    }
 
     public Queue<Cliente> getFila() {
         return clientes;
@@ -29,9 +27,16 @@ public class FilaDeEspera {
         return clientes.poll();
     }
 
-    public Cliente removerCliente() {
-        return clientes.poll();
-    }
+
+  public void removerCliente(Cliente cliente) {
+      Iterator<Cliente> iterator = clientes.iterator();
+      while (iterator.hasNext()) {
+          if (iterator.next().equals(cliente)) {
+              iterator.remove();
+              break;
+          }
+      }
+  }
 
 
 }
