@@ -1,64 +1,59 @@
-import java.util.Date;
-
+import java.util.Scanner;
 public class Main {
-  public static void main(String[] args) {
-    // Cria o restaurante com mesas de diferentes capacidades
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
     Restaurante restaurante = new Restaurante();
+    int opcao;
 
-    // Cria alguns clientes
-    Cliente cliente1 = new Cliente("Danilo", 8);
-    Cliente cliente2 = new Cliente("Elenice", 8);
-    Cliente cliente3 = new Cliente("Michelle", 6);
-    Cliente cliente4 = new Cliente("Sandro", 6);
-    Cliente cliente5 = new Cliente("Beiloçudo", 4);
-    Cliente cliente6 = new Cliente("Mc Kevin", 4);
-    Cliente cliente7 = new Cliente("Tio Paulo",4);
-    Cliente cliente8 = new Cliente("Jorge Souza",6);
-    Cliente cliente9 = new Cliente("LuCosta",6);
-    Cliente cliente10 = new Cliente("Hulk",6);
-  
-    //Clientes que irao para o restaurante
-    System.out.println("Clientes chegando ao restaurante.");
-    restaurante.processarRequisicaoCliente(cliente1);
-    restaurante.processarRequisicaoCliente(cliente2);
-    restaurante.processarRequisicaoCliente(cliente3);
-    restaurante.processarRequisicaoCliente(cliente4);
-    restaurante.processarRequisicaoCliente(cliente5);
-    restaurante.processarRequisicaoCliente(cliente6);
-    restaurante.processarRequisicaoCliente(cliente7);
-    restaurante.processarRequisicaoCliente(cliente8);
-    restaurante.processarRequisicaoCliente(cliente9);
-    
-    //Clientes que fazem a requisição
-    System.out.println("Outro cliente chega.");
-    restaurante.processarRequisicaoCliente(cliente10);
-    
-    //Clientes que liberaram a mesa
-    System.out.println("Um cliente está saindo.");
-    cliente4.sairDoRestaurante();
-    
+    do {
+        System.out.println("\nMenu:");
+        System.out.println("1 - Entrar no restaurante");
+        System.out.println("2 - Sair do restaurante");
+        System.out.println("3 - Mostrar todas as mesas");
+        System.out.println("4 - Mostrar histórico de clientes");
+        System.out.println("0 - Sair");
+        System.out.print("Escolha uma opção: ");
+        opcao = scanner.nextInt();
 
-    //Quem estava esperando entra nas mesas que esvaziaram
-    if (!restaurante.getFilaDeEspera().estaVazia()) {
-      Cliente clienteEspera = restaurante.getFilaDeEspera().removerCliente();
-      restaurante.processarRequisicaoCliente(clienteEspera);
+        switch (opcao) {
+            case 1:
+                entrarRestaurante(scanner, restaurante);
+                break;
+            case 2:
+                sairRestaurante(scanner, restaurante);
+                break;
+            case 3:
+                mostrarMesas(restaurante);
+                break;
+            case 4:
+                restaurante.mostrarHistoricoClientes();
+                break;
+            case 0:
+                System.out.println("Saindo...");
+                break;
+            default:
+                System.out.println("Opção inválida!");
+        }
+    } while (opcao != 0);
+
+    scanner.close();
+}
+
+    private static void entrarRestaurante(Scanner scanner, Restaurante restaurante) {
+        System.out.print("Nome do cliente: ");
+        String nome = scanner.next();
+        System.out.print("Número de pessoas: ");
+        int numPessoas = scanner.nextInt();
+        restaurante.processarRequisicaoCliente(new Cliente(nome, numPessoas));
     }
 
-    
-    System.out.println("Estado final das mesas:");
-    restaurante.getMesas().forEach(mesa -> {
-      System.out.println(mesa);
-    });
+    private static void sairRestaurante(Scanner scanner, Restaurante restaurante) {
+        System.out.print("Digite o ID da mesa para desocupar: ");
+        int idMesa = scanner.nextInt();
+        restaurante.desocuparMesa(idMesa);
+    }
 
-    
-    System.out.println("Clientes restantes na fila de espera:");
-    while (!restaurante.getFilaDeEspera().estaVazia()) {
-      Cliente cliente = restaurante.getFilaDeEspera().removerCliente();
-      System.out.println(cliente.getNome() + " ainda está esperando.");
+    private static void mostrarMesas(Restaurante restaurante) {
+        restaurante.mostrarMesas();
     }
-    if (!restaurante.getFilaDeEspera().estaVazia()) {
-      Cliente clienteEspera = restaurante.getFilaDeEspera().removerCliente();
-      restaurante.processarRequisicaoCliente(clienteEspera);
-    }
-  }
 }
