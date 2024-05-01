@@ -8,13 +8,12 @@
     public class Restaurante {
         private List<Mesa> mesas;
         private FilaDeEspera filaDeEspera;
-        private Set<Cliente> historicoClientes;  // Para armazenar o histórico de todos os clientes
+        private Set<Cliente> historicoClientes; 
 
         public Restaurante() {
             this.mesas = new ArrayList<>();
             this.filaDeEspera = new FilaDeEspera();
-            this.historicoClientes = new HashSet<>();  // Inicializa a lista do histórico
-            // Inicializando mesas
+            this.historicoClientes = new HashSet<>(); 
             for (int i = 0; i < 4; i++) this.mesas.add(new Mesa(i + 1, 4));
             for (int i = 4; i < 8; i++) this.mesas.add(new Mesa(i + 1, 6));
             for (int i = 8; i < 10; i++) this.mesas.add(new Mesa(i + 1, 8));
@@ -25,7 +24,7 @@
             if (mesaDisponivel != null) {
                 mesaDisponivel.ocupar();
                 mesaDisponivel.setCliente(cliente);
-                historicoClientes.add(cliente);  // Adiciona o cliente ao histórico
+                historicoClientes.add(cliente); 
                 System.out.println("Mesa " + mesaDisponivel.getId() + " alocada para " + cliente.getNome());
             } else {
                 System.out.println("Nenhuma mesa disponível para " + cliente.getNome() + ". Adicionado à fila de espera.");
@@ -68,7 +67,7 @@
               return;
           }
 
-          // Tentar realocar um cliente da fila de espera para a mesa que acabou de ser liberada
+          
           realocarClienteParaMesa(mesa);
       }
 
@@ -77,10 +76,10 @@
           while (iterator.hasNext()) {
               Cliente cliente = iterator.next();
               if (cliente.getNumPessoas() <= mesa.getCapacidade() && !mesa.isOcupada()) {
-                  iterator.remove(); // Remove o cliente da fila de espera
+                  iterator.remove();
                   mesa.setCliente(cliente);
                   mesa.ocupar();
-                  historicoClientes.add(cliente);  // Adiciona o cliente ao histórico
+                  historicoClientes.add(cliente); 
                   System.out.println("Cliente " + cliente.getNome() + " foi realocado da fila de espera para a mesa " + mesa.getId());
                   return;
               }
