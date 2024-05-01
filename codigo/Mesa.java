@@ -2,7 +2,7 @@ public class Mesa {
     private int id;
     private int capacidade;
     private boolean ocupada;
-    private Cliente cliente;  // Adicionar este campo
+    private Cliente cliente; 
 
     public Mesa(int id, int capacidade) {
         this.id = id;
