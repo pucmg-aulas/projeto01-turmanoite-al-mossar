@@ -29,7 +29,7 @@ public class Mesa {
 
     public void desocupar() {
         ocupada = false;
-        cliente = null;  // Limpar referência ao cliente ao desocupar
+        cliente = null; 
     }
 
     public Cliente getCliente() {
