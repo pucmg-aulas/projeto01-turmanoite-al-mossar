@@ -11,6 +11,7 @@ public static void main(String[] args) {
         System.out.println("2 - Sair do restaurante");
         System.out.println("3 - Mostrar todas as mesas");
         System.out.println("4 - Mostrar histórico de clientes");
+        System.out.println("5 - Anotar pedido para uma mesa");
         System.out.println("0 - Sair");
         System.out.print("Escolha uma opção: ");
         opcao = scanner.nextInt();
@@ -28,6 +29,10 @@ public static void main(String[] args) {
             case 4:
                 restaurante.mostrarHistoricoClientes();
                 break;
+            case 5:
+                anotarPedido(scanner, restaurante);
+                break;
+
             case 0:
                 System.out.println("Saindo...");
                 break;
@@ -48,12 +53,45 @@ public static void main(String[] args) {
     }
 
     private static void sairRestaurante(Scanner scanner, Restaurante restaurante) {
-        System.out.print("Digite o ID da mesa para desocupar: ");
+        System.out.print("Digite o ID da mesa para sair: ");
         int idMesa = scanner.nextInt();
-        restaurante.desocuparMesa(idMesa);
+        Mesa mesa = restaurante.getMesa(idMesa);
+        if (mesa != null && mesa.isOcupada()) {
+            mesa.getPedido().finalizarPedido();
+            System.out.println("Total da conta (com 10% de serviço): R$" + mesa.getPedido().getTotal());
+            restaurante.desocuparMesa(idMesa);
+        } else {
+            System.out.println("Mesa não encontrada ou já está desocupada.");
+        }
     }
+
 
     private static void mostrarMesas(Restaurante restaurante) {
         restaurante.mostrarMesas();
     }
+
+    private static void anotarPedido(Scanner scanner, Restaurante restaurante) {
+        System.out.print("Digite o ID da mesa para anotar o pedido: ");
+        int idMesa = scanner.nextInt();
+        Mesa mesa = restaurante.getMesa(idMesa);
+        if (mesa != null && mesa.isOcupada()) {
+            System.out.println("Cardápio disponível:");
+            for (ItemMenu item : restaurante.getCardapio().getItens()) {
+                System.out.println(item.getNome() + " - R$ " + item.getPreco());
+            }
+            System.out.print("Digite o nome do prato ou bebida desejada: ");
+            scanner.nextLine(); // Limpar buffer
+            String nomeItem = scanner.nextLine();
+            ItemMenu item = restaurante.getCardapio().getItemPorNome(nomeItem);
+            if (item != null) {
+                mesa.getPedido().adicionarItem(item);
+                System.out.println("Item adicionado ao pedido.");
+            } else {
+                System.out.println("Item não encontrado no cardápio.");
+            }
+        } else {
+            System.out.println("Mesa não encontrada ou não está ocupada.");
+        }
+    }
+
 }
