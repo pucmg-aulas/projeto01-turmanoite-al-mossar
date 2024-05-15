@@ -26,6 +26,24 @@ public class Cliente {
     this.requisicao = requisicao;
   }
 
+  public void fazerPedido(Mesa mesa, String nomeItem, Cardapio cardapio) {
+      ItemMenu item = cardapio.getItemPorNome(nomeItem);
+      if (item != null && mesa.getPedido() != null) {
+          mesa.getPedido().adicionarItem(item);
+      } else {
+          System.out.println("Item não encontrado ou pedido não iniciado.");
+      }
+  }
+
+  
+  public void fecharConta(Mesa mesa) {
+      if (mesa.getPedido() != null) {
+          mesa.getPedido().finalizarPedido();
+          System.out.println("Total da conta com serviço: " + mesa.getPedido().getTotal());
+          System.out.println("Valor por pessoa: " + mesa.getPedido().getDivisaoConta(numPessoas));
+      }
+  }
+
   public void sairDoRestaurante() {
     if (this.requisicao != null && this.requisicao.getMesa() != null) {
       this.requisicao.getMesa().desocupar();
