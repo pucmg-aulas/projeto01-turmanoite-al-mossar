@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
-    private List<ItemMenu> itens;
+    private List<ItemPedido> itens;
     private double total;
     private boolean finalizado;
 
@@ -12,10 +12,10 @@ public class Pedido {
         this.finalizado = false;
     }
 
-    public void adicionarItem(ItemMenu item) {
+    public void adicionarItem(ItemMenu item, int quantidade) {
         if (!finalizado) {
-            itens.add(item);
-            total += item.getPreco();
+            itens.add(new ItemPedido(item, quantidade));
+            total += item.getPreco() * quantidade;
         }
     }
 
@@ -30,5 +30,27 @@ public class Pedido {
 
     public double getDivisaoConta(int numPessoas) {
         return total / numPessoas;
+    }
+
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public static class ItemPedido {
+        private ItemMenu item;
+        private int quantidade;
+
+        public ItemPedido(ItemMenu item, int quantidade) {
+            this.item = item;
+            this.quantidade = quantidade;
+        }
+
+        public ItemMenu getItem() {
+            return item;
+        }
+
+        public int getQuantidade() {
+            return quantidade;
+        }
     }
 }
