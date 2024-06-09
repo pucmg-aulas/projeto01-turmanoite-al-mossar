@@ -13,63 +13,38 @@ import java.util.Scanner;
 
 public class AlMossar {
 
-    @SuppressWarnings("unused")
     public static void main(String[] args) {
         MenuController menucontroller = MenuController.getInstancia();
         
-        Scanner scanner = new Scanner(System.in);
-        Restaurante restaurante = new Restaurante();
-        int opcao;
-
-        do {
-            System.out.println("\nMenu:");
-            System.out.println("1 - Entrar no restaurante");
-            System.out.println("2 - Sair do restaurante");
-            System.out.println("3 - Mostrar todas as mesas");
-            System.out.println("4 - Mostrar histórico de clientes");
-            System.out.println("5 - Anotar pedido para uma mesa");
-            System.out.println("6 - Mostrar comandas");
-            System.out.println("0 - Sair");
-            System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-
-            switch (opcao) {
-                case 1:
-                    entrarRestaurante(scanner, restaurante);
-                    break;
-                case 2:
-                    sairRestaurante(scanner, restaurante);
-                    break;
-                case 3:
-                    mostrarMesas(restaurante);
-                    break;
-                case 4:
-                    restaurante.mostrarHistoricoClientes();
-                    break;
-                case 5:
-                    anotarPedido(scanner, restaurante);
-                    break;
-                case 6:
-                    restaurante.mostrarComandas();
-                    break;
-                case 0:
-                    System.out.println("Saindo...");
-                    break;
-                default:
-                    System.out.println("Opção inválida!");
-            }
-        } while (opcao != 0);
-
-        scanner.close();
+        try (Scanner scanner = new Scanner(System.in)) {
+            Restaurante restaurante = new Restaurante();
+            int opcao;
+            
+            do {
+                System.out.println("\nMenu:");
+                System.out.println("1 - Entrar no restaurante");
+                System.out.println("2 - Sair do restaurante");
+                System.out.println("3 - Mostrar todas as mesas");
+                System.out.println("4 - Mostrar histórico de clientes");
+                System.out.println("5 - Anotar pedido para uma mesa");
+                System.out.println("6 - Mostrar comandas");
+                System.out.println("0 - Sair");
+                System.out.print("Escolha uma opção: ");
+                opcao = scanner.nextInt();
+                
+                switch (opcao) {
+                    case 2 -> sairRestaurante(scanner, restaurante);
+                    case 3 -> mostrarMesas(restaurante);
+                    
+                    case 5 -> anotarPedido(scanner, restaurante);
+                    case 6 -> restaurante.mostrarComandas();
+                    case 0 -> System.out.println("Saindo...");
+                    default -> System.out.println("Opção inválida!");
+                }
+            } while (opcao != 0);
+        }
     }
 
-    private static void entrarRestaurante(Scanner scanner, Restaurante restaurante) {
-        System.out.print("Nome do cliente: ");
-        String nome = scanner.next();
-        System.out.print("Número de pessoas: ");
-        int numPessoas = scanner.nextInt();
-        restaurante.processarRequisicaoCliente(new Cliente(nome, numPessoas));
-    }
 
     private static void sairRestaurante(Scanner scanner, Restaurante restaurante) {
         System.out.print("Digite o ID da mesa para sair: ");

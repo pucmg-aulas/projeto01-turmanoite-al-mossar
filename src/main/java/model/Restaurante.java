@@ -45,41 +45,8 @@ public class Restaurante {
         cardapio.adicionarItem(new ItemMenu("Taça de vinho", 10.00));
     }
 
-    public void processarRequisicaoCliente(Cliente cliente) {
-        Mesa mesaDisponivel = encontrarMesaDisponivel(cliente.getNumPessoas());
-        if (mesaDisponivel != null) {
-            mesaDisponivel.ocupar(cliente);
-            cliente.getRequisicao().setMesa(mesaDisponivel);
-            cliente.getRequisicao().registrarEntrada(new Date());
-            System.out.println("Model.Mesa " + mesaDisponivel.getId() + " alocada para " + cliente.getNome());
-            historicoClientes.add(cliente); // Adiciona o cliente ao histórico quando é alocado a uma mesa
-        } else {
-            System.out.println("Nenhuma mesa disponível para " + cliente.getNome() + ". Adicionado à fila de espera.");
-            filaDeEspera.adicionarCliente(cliente);
-        }
-    }
 
-    public void mostrarHistoricoClientes() {
-        if (historicoClientes.isEmpty()) {
-            System.out.println("Não há histórico de clientes no momento.");
-        } else {
-            System.out.println("Histórico de todos os clientes:");
-            for (Cliente cliente : historicoClientes) {
-                Requisicao requisicao = cliente.getRequisicao();
-                System.out.println("Model.Cliente: " + cliente.getNome() + ", Pessoas: " + cliente.getNumPessoas() +
-                                   ", Entrada: " + requisicao.getHoraEntrada() + ", Saída: " + requisicao.getHoraSaida() + "\n");
-            }
-        }
-    }
 
-    private Mesa encontrarMesaDisponivel(int numPessoas) {
-        for (Mesa mesa : mesas) {
-            if (!mesa.isOcupada() && mesa.getCapacidade() >= numPessoas) {
-                return mesa;
-            }
-        }
-        return null;
-    }
 
     public void desocuparMesa(int idMesa) {
         Mesa mesa = null;

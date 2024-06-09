@@ -8,7 +8,6 @@ import view.TelaMenu;
 import view.TelaCadastrarCliente;
 
 
-@SuppressWarnings("unused")
 public class MenuController {
 
     private static MenuController instancia;
