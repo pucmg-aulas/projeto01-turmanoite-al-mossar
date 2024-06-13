@@ -1,59 +1,47 @@
-
-
 package model;
 
-public class Mesa {
-    private int id;
-    private int capacidade;
-    private boolean ocupada;
-    private Cliente cliente;
-    private Pedido pedido;
+import java.io.Serializable;
 
-    public Mesa(int id, int capacidade) {
+public class Mesa implements Serializable {
+
+    private int id;
+    private boolean ocupada;
+    private int capacidade;
+
+    public Mesa(int id,  int capacidade) {
         this.id = id;
+        this.ocupada = ocupada;
         this.capacidade = capacidade;
-        this.ocupada = false;
-        this.cliente = null;
-        this.pedido = null;
     }
 
-    public void iniciarPedido() {
-            this.pedido = new Pedido();
-        }
-
-        public Pedido getPedido() {
-            return pedido;
-        }
-    
 
     public int getId() {
         return id;
     }
 
-    public int getCapacidade() {
-        return capacidade;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isOcupada() {
         return ocupada;
     }
 
-    public void ocupar(Cliente cliente) {
-        this.ocupada = true;
-        this.cliente = cliente;
-        this.pedido = new Pedido();  // Inicia um novo pedido assim que a mesa é ocupada
+    public void setOcupada(boolean ocupada) {
+        this.ocupada = ocupada;
     }
 
-    public void desocupar() {
-        ocupada = false;
-        cliente = null;  // Limpar referência ao cliente ao desocupar
+    public int getCapacidade() {
+        return capacidade;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public void setCapacidade(int capacidade) {
+        this.capacidade = capacidade;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    @Override
+    public String toString() {
+        return id + "%" + capacidade + "%" + ocupada + "%";
     }
+
 }
