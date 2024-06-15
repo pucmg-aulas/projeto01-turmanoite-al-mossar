@@ -8,9 +8,9 @@ public class Mesa implements Serializable {
     private boolean ocupada;
     private int capacidade;
 
-    public Mesa(int id,  int capacidade) {
+    public Mesa(int id, boolean ocupada ,int capacidade) {
         this.id = id;
-        this.ocupada = ocupada;
+        this.ocupada = false;
         this.capacidade = capacidade;
     }
 

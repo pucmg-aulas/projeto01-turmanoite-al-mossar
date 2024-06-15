@@ -1,10 +1,12 @@
 package controller;
 
 import dao.Mesas;
-import javax.swing.JOptionPane;
 import model.Mesa;
-import view.TelaAddMesa;
+import javax.swing.table.DefaultTableModel;
+import java.util.Iterator;
 import view.TelaExibicaoMesas;
+
+
 
 public class ListarMesaController {
 
@@ -16,31 +18,24 @@ public class ListarMesaController {
         this.mesas = Mesas.getInstance();
         this.view = new TelaExibicaoMesas();
 
-        this.view.getjToggleButton1().addActionListener((e) -> {
-            addMesa();
-        });
+        carregaTabela();
+
+        this.view.setVisible(true);
     }
 
-    public void addMesa() {
+    private void carregaTabela() {
+        Object colunas[] = { "Id", "Capacidade", "Ocupada" };
+        DefaultTableModel tablemodel = new DefaultTableModel(colunas, 0);
 
-        int id = Integer.parseInt(view.getJtxtId().getText());
-        int capacidade = Integer.parseInt(view.getJtxtCapt().getText());
-
-        Mesa m = new Mesa(id, capacidade);
-
-        mesas.addMesa(m);
-
-        JOptionPane.showMessageDialog(view, "Mesa salva com sucesso!");
-
-        //this.view.dispose();
-        limparTela();
-
-    }
-
-    private void limparTela() {
-
-        this.view.getJtxtId().setText("");
-        this.view.getJtxtCapt().setText("");
+        tablemodel.setNumRows(0);
+        Iterator<Mesa> it = mesas.getMesas().iterator();
+        while (it.hasNext()) {
+            Mesa m = it.next();
+            String mesa = m.toString();
+            String linha[] = mesa.split("%");
+            tablemodel.addRow(new Object[] { linha[0], linha[1] });
+        }
+        view.getjTable1().setModel(tablemodel);
     }
 
 }

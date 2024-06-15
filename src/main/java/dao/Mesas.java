@@ -4,7 +4,6 @@ import model.Mesa;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -15,7 +14,7 @@ public class Mesas extends AbstractDAO  implements Serializable{
     private static Mesas instance;
     
     //Endereço do arquivo serializado que contém a coleção de mesas
-    private final String localArquivo = "./src/main/java/data/mesas.txt";
+    private final String localArquivo = "./src/main/java/data/mesas.dat";
 
     //Singleton
     private Mesas() {
@@ -33,7 +32,6 @@ public class Mesas extends AbstractDAO  implements Serializable{
     
     public void addMesa(Mesa mesa){
         this.mesas.add(mesa);
-        System.out.println("ERRRRROOOO");
         grava();
     }
 
@@ -46,7 +44,7 @@ public class Mesas extends AbstractDAO  implements Serializable{
         super.grava(localArquivo, mesas);
     }
 
-    public List<Mesa> getmesas() {
+    public List<Mesa> getMesas() {
         return mesas;
     }
     
