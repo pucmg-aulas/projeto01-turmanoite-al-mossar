@@ -7,6 +7,10 @@ package view;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import controller.ListarMesaController;
+
 
 
 public class TelaExibicaoMesas extends javax.swing.JInternalFrame {
@@ -27,156 +31,201 @@ public class TelaExibicaoMesas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelTable = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButtonAdicionar = new javax.swing.JButton();
-        jButtonExcluir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jtxtId = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jtxtCapt = new javax.swing.JTextField();
+        tableMesas = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        btnExcluirMesa = new javax.swing.JButton();
+        btnSalvarMesa = new javax.swing.JButton();
+        txtCap = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setClosable(true);
 
         jLabel1.setText("Lista de Mesas");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableMesas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Id", "Capacidade", "Ocupada"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        jButtonAdicionar.setText("Adicionar");
-        jButtonAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tableMesas);
+
+        javax.swing.GroupLayout jPanelTableLayout = new javax.swing.GroupLayout(jPanelTable);
+        jPanelTable.setLayout(jPanelTableLayout);
+        jPanelTableLayout.setHorizontalGroup(
+            jPanelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTableLayout.createSequentialGroup()
+                .addGroup(jPanelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelTableLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelTableLayout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelTableLayout.setVerticalGroup(
+            jPanelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTableLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        btnExcluirMesa.setText("Excluir");
+        btnExcluirMesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAdicionarActionPerformed(evt);
+                btnExcluirMesaActionPerformed(evt);
             }
         });
 
-        jButtonExcluir.setText("Excluir");
-
-        jLabel2.setText("Id");
-
-        jtxtId.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvarMesa.setText("Salvar");
+        btnSalvarMesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtIdActionPerformed(evt);
+                btnSalvarMesaActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Capacidade");
+        jLabel4.setText("Capacidade:");
 
-        jtxtCapt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtCaptActionPerformed(evt);
-            }
-        });
+        jLabel5.setText("ID:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(71, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(398, 398, 398))
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCap, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvarMesa)
+                        .addGap(96, 96, 96))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtxtCapt, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57)
-                                .addComponent(jButtonAdicionar)
-                                .addGap(6, 6, 6))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(60, 60, 60)
-                        .addComponent(jButtonExcluir)
-                        .addGap(60, 60, 60))))
+                        .addComponent(btnExcluirMesa)
+                        .addGap(35, 35, 35))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jButtonExcluir)))
-                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAdicionar)
-                    .addComponent(jtxtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtxtCapt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(btnSalvarMesa)
+                    .addComponent(txtCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(btnExcluirMesa)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtxtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtIdActionPerformed
+    private void btnSalvarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarMesaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtIdActionPerformed
+        DefaultTableModel tmMesa = (DefaultTableModel)tableMesas.getModel();
+        Object [] dados = {txtID.getText(), txtCap.getText()};
+        tmMesa.addRow(dados);
+        
+        ListarMesaController controller = new ListarMesaController();
+        controller.cadastrarMesa();
+        controller.LoadTableMesas();
+        controller.limpaCampo();
+        
+        
+    }//GEN-LAST:event_btnSalvarMesaActionPerformed
 
-    private void jtxtCaptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtCaptActionPerformed
+    private void btnExcluirMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirMesaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtCaptActionPerformed
+        if(tableMesas.getSelectedRow() != -1){
+            
+            DefaultTableModel tmMesa = (DefaultTableModel)tableMesas.getModel();
+            tmMesa.removeRow(tableMesas.getSelectedRow());
+        }     
+        else{
+            JOptionPane.showMessageDialog(null,"Selecione uma mesa");
+        }
 
-    private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAdicionarActionPerformed
+    }//GEN-LAST:event_btnExcluirMesaActionPerformed
 
-    public JButton getjButtonAdicionar() {
-        return jButtonAdicionar;
+    public JButton getBtnExcluirMesa() {
+        return btnExcluirMesa;
     }
 
-    public JButton getjButtonExcluir() {
-        return jButtonExcluir;
+    public JButton getBtnSalvarMesa() {
+        return btnSalvarMesa;
     }
 
-    public JTable getjTable1() {
-        return jTable1;
+    public void setTxtCap(JTextField txtCap) {
+        this.txtCap = txtCap;
     }
 
-    public JTextField getJtxtCapt() {
-        return jtxtCapt;
+    public void setTxtID(JTextField txtID) {
+        this.txtID = txtID;
     }
 
-    public JTextField getJtxtId() {
-        return jtxtId;
+    public JTable getTableMesas() {
+        return tableMesas;
+    }
+
+    public JTextField getTxtCap() {
+        return txtCap;
+    }
+
+    public JTextField getTxtID() {
+        return txtID;
     }
 
 
@@ -186,15 +235,16 @@ public class TelaExibicaoMesas extends javax.swing.JInternalFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAdicionar;
-    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton btnExcluirMesa;
+    private javax.swing.JButton btnSalvarMesa;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelTable;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jtxtCapt;
-    private javax.swing.JTextField jtxtId;
+    private javax.swing.JTable tableMesas;
+    private javax.swing.JTextField txtCap;
+    private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }

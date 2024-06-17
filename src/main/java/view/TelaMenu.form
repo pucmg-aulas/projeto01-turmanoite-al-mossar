@@ -23,12 +23,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jDesktopPane1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jDesktopPane1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jDesktopPane1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jDesktopPane1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -46,17 +54,17 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnCadastrarCliente" max="32767" attributes="0"/>
-                      <Component id="btnExibirMesas" max="32767" attributes="0"/>
-                      <Component id="btnHistoricoClientes" max="32767" attributes="0"/>
-                      <Component id="btnExibirComandas" max="32767" attributes="0"/>
-                      <Component id="btnComandas" max="32767" attributes="0"/>
-                      <Component id="btnFinalizarMesa" max="32767" attributes="0"/>
+                      <Component id="btnExibirCardapio" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnCadastrarCliente" max="32767" attributes="0"/>
+                          <Component id="btnExibirMesas" max="32767" attributes="0"/>
+                          <Component id="btnHistoricoClientes" max="32767" attributes="0"/>
+                          <Component id="btnExibirComandas" max="32767" attributes="0"/>
+                          <Component id="btnComandas" max="32767" attributes="0"/>
+                          <Component id="btnFinalizarMesa" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="140" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="155" max="32767" attributes="0"/>
                   <Component id="btnSair" min="-2" pref="157" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
@@ -77,9 +85,12 @@
                   <Component id="btnComandas" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btnFinalizarMesa" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnSair" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnSair" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnExibirCardapio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="162" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -140,6 +151,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFinalizarMesaActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnExibirCardapio">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Exibir Cardapio"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

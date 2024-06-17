@@ -3,10 +3,8 @@ package controller;
 import dao.Mesas;
 import model.Mesa;
 import javax.swing.table.DefaultTableModel;
-import java.util.Iterator;
 import view.TelaExibicaoMesas;
-
-
+import javax.swing.JOptionPane;
 
 public class ListarMesaController {
 
@@ -17,25 +15,45 @@ public class ListarMesaController {
 
         this.mesas = Mesas.getInstance();
         this.view = new TelaExibicaoMesas();
-
-        carregaTabela();
+        
 
         this.view.setVisible(true);
+
     }
+    
 
-    private void carregaTabela() {
-        Object colunas[] = { "Id", "Capacidade", "Ocupada" };
-        DefaultTableModel tablemodel = new DefaultTableModel(colunas, 0);
 
-        tablemodel.setNumRows(0);
-        Iterator<Mesa> it = mesas.getMesas().iterator();
-        while (it.hasNext()) {
-            Mesa m = it.next();
-            String mesa = m.toString();
-            String linha[] = mesa.split("%");
-            tablemodel.addRow(new Object[] { linha[0], linha[1] });
+    public void cadastrarMesa() {
+        try {
+            int id = Integer.parseInt(view.getTxtID().getText().trim());
+            boolean ocupada = false;
+            int capacidade = Integer.parseInt(view.getTxtCap().getText().trim());
+            Mesa mesa = new Mesa(id, ocupada ,capacidade);
+            mesas.addMesa(mesa);
+            JOptionPane.showMessageDialog(view, "Mesa cadastrado com sucesso");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(view, "ID e Capacidade devem ser números.", "Erro de Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
         }
-        view.getjTable1().setModel(tablemodel);
+
     }
 
+    public void LoadTableMesas() {
+        DefaultTableModel modelo = new DefaultTableModel(new Object[]{"ID", "Capacidade", "Ocupada"}, 0);
+
+        for (Mesa mesa : mesas.getMesas()) {
+            Object[] linha = {mesa.getId(), mesa.getCapacidade(), mesa.isOcupada()};
+            modelo.addRow(linha);
+            System.out.println("Mesa carregada: " + mesa);
+        }
+
+        view.getTableMesas().setModel(modelo);
+    }
+
+
+    public void limpaCampo() {
+
+        view.getTxtCap().setText("");
+        view.getTxtID().setText("");
+    }
 }

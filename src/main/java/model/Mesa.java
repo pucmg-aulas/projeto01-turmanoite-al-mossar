@@ -8,12 +8,11 @@ public class Mesa implements Serializable {
     private boolean ocupada;
     private int capacidade;
 
-    public Mesa(int id, boolean ocupada ,int capacidade) {
+    public Mesa(int id, boolean ocupada, int capacidade) {
         this.id = id;
         this.ocupada = false;
         this.capacidade = capacidade;
     }
-
 
     public int getId() {
         return id;

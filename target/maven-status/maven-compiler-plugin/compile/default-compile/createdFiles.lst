@@ -1,4 +1,5 @@
 view\TelaMenu$6.class
+view\TelaExibirCardapio$4.class
 main\AlMossar.class
 view\TelaHistoricoClientes.class
 view\TelaCadastrarCliente$1.class
@@ -21,6 +22,8 @@ view\TelaFecharMesa.class
 model\Mesa.class
 view\TelaMenu$3.class
 view\TelaMenu.class
+model\ItemMenu.class
+controller\ListarCardapioController.class
 view\TelaCadastrarCliente$2.class
 view\TelaExibicaoComandas.class
 view\TelaMenu$8.class
