@@ -15,11 +15,24 @@ public class ListarMesaController {
 
         this.mesas = Mesas.getInstance();
         this.view = new TelaExibicaoMesas();
+
+        //Criando os listeners para cada botão presente na tela (View)
+        this.view.getBtnSalvar().addActionListerner((e)->{
+            
+        });
+
+        this.view.getBtnSair().addActionListener((e)->{
+            sair();
+        });
         
 
         this.view.setVisible(true);
 
     }
+
+    private void sair(){
+        this.view.dispose();
+    };
     
 
 
