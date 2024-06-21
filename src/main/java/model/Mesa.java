@@ -14,6 +14,11 @@ public class Mesa implements Serializable {
         this.capacidade = capacidade;
     }
 
+    public Mesa(int id, int capacidade) {
+        this.id = id;
+        this.capacidade = capacidade;
+    }    
+
     public int getId() {
         return id;
     }

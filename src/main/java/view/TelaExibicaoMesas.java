@@ -7,9 +7,6 @@ package view;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JOptionPane;
-import controller.ListarMesaController;
 
 
 
@@ -19,6 +16,7 @@ public class TelaExibicaoMesas extends javax.swing.JInternalFrame {
      * Creates new form TelaExibicaoMesas
      */
     public TelaExibicaoMesas() {
+  
         initComponents();
     }
 
@@ -37,11 +35,11 @@ public class TelaExibicaoMesas extends javax.swing.JInternalFrame {
         tableMesas = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         btnExcluirMesa = new javax.swing.JButton();
-        btnSalvarMesa = new javax.swing.JButton();
         txtCap = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        btnSalvarMesa = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -102,16 +100,23 @@ public class TelaExibicaoMesas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnSalvarMesa.setText("Salvar");
-        btnSalvarMesa.addActionListener(new java.awt.event.ActionListener() {
+        txtCap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarMesaActionPerformed(evt);
+                txtCapActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Capacidade:");
 
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
+
         jLabel5.setText("ID:");
+
+        btnSalvarMesa.setText("Salvar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,9 +133,9 @@ public class TelaExibicaoMesas extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCap, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(28, 28, 28)
                         .addComponent(btnSalvarMesa)
-                        .addGap(96, 96, 96))
+                        .addGap(83, 83, 83))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnExcluirMesa)
                         .addGap(35, 35, 35))))
@@ -140,11 +145,11 @@ public class TelaExibicaoMesas extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarMesa)
                     .addComponent(txtCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(btnSalvarMesa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(btnExcluirMesa)
                 .addContainerGap())
@@ -173,32 +178,18 @@ public class TelaExibicaoMesas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalvarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarMesaActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel tmMesa = (DefaultTableModel)tableMesas.getModel();
-        Object [] dados = {txtID.getText(), txtCap.getText()};
-        tmMesa.addRow(dados);
-        
-        ListarMesaController controller = new ListarMesaController();
-        controller.cadastrarMesa();
-        controller.LoadTableMesas();
-        controller.limpaCampo();
-        
-        
-    }//GEN-LAST:event_btnSalvarMesaActionPerformed
-
     private void btnExcluirMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirMesaActionPerformed
-        // TODO add your handling code here:
-        if(tableMesas.getSelectedRow() != -1){
-            
-            DefaultTableModel tmMesa = (DefaultTableModel)tableMesas.getModel();
-            tmMesa.removeRow(tableMesas.getSelectedRow());
-        }     
-        else{
-            JOptionPane.showMessageDialog(null,"Selecione uma mesa");
-        }
-
+        // TODO add your handling code here:       
     }//GEN-LAST:event_btnExcluirMesaActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void txtCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCapActionPerformed
 
     public JButton getBtnExcluirMesa() {
         return btnExcluirMesa;

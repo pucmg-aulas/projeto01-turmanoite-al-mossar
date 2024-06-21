@@ -6,14 +6,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mesas extends AbstractDAO implements Serializable {
+public class Mesas extends AbstractDAO  {
 
     private List<Mesa> mesas;
 
     private static Mesas instance;
 
     // Endereço do arquivo serializado que contém a coleção de mesas
-    private final String localArquivo = "./src/main/java/data/mesas.dat";
+    private final String localArquivo = "./src/main/java/data/Mesas.dat";
 
     // Singleton
     private Mesas() {

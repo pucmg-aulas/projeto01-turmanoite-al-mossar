@@ -22,7 +22,7 @@ public abstract class AbstractDAO {
             System.out.println("Dados gravados com sucesso");
         } catch (Exception e)
         {
-            System.out.println("Erro ao serializar " + e.getMessage());
+            System.err.println("Erro ao serializar " + e.getMessage());
         }
     }
 
@@ -36,10 +36,7 @@ public abstract class AbstractDAO {
             ObjectInputStream oi = new ObjectInputStream(fi);
             retorno = (List) oi.readObject();
             oi.close();
-            
             return retorno;
-            
-                       
         } catch (Exception e)
         {
             System.out.println(e.getMessage());

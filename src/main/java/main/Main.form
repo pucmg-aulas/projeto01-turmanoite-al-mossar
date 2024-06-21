@@ -55,14 +55,12 @@
                   <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btnExibirCardapio" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnCadastrarCliente" max="32767" attributes="0"/>
-                          <Component id="btnExibirMesas" max="32767" attributes="0"/>
-                          <Component id="btnHistoricoClientes" max="32767" attributes="0"/>
-                          <Component id="btnExibirComandas" max="32767" attributes="0"/>
-                          <Component id="btnComandas" max="32767" attributes="0"/>
-                          <Component id="btnFinalizarMesa" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btnCadastrarCliente" max="32767" attributes="0"/>
+                      <Component id="btnExibirMesas" max="32767" attributes="0"/>
+                      <Component id="btnHistoricoClientes" max="32767" attributes="0"/>
+                      <Component id="btnExibirComandas" max="32767" attributes="0"/>
+                      <Component id="btnComandas" max="32767" attributes="0"/>
+                      <Component id="btnFinalizarMesa" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="155" max="32767" attributes="0"/>
                   <Component id="btnSair" min="-2" pref="157" max="-2" attributes="0"/>
