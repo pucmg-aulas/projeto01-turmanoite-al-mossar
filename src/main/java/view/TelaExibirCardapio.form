@@ -52,7 +52,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtPreço" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="txtPreco" min="-2" pref="81" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="jButtonAdicionar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
@@ -87,7 +87,7 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonAdicionar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtPreço" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPreco" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtItem" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -167,9 +167,9 @@
             <Property name="text" type="java.lang.String" value="Pre&#xe7;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPre&#xe7;o">
+        <Component class="javax.swing.JTextField" name="txtPreco">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPre&#xe7;oActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrecoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -4,6 +4,7 @@
  */
 package main;
 
+import controller.ListarCardapioController;
 import controller.ListarMesaController;
 import dao.Mesas;
 import view.TelaCadastrarCliente;
@@ -98,6 +99,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         btnExibirCardapio.setText("Exibir Cardapio");
+        btnExibirCardapio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExibirCardapioActionPerformed(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(btnCadastrarCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btnExibirMesas, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -216,12 +222,16 @@ public class Main extends javax.swing.JFrame {
         telaFecharMesa.setVisible(true);
     }//GEN-LAST:event_btnFinalizarMesaActionPerformed
 
-    private void btnExibirCardapioActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnExibirCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExibirCardapioActionPerformed
         // TODO add your handling code here:
+        
+                // TODO add your handling code here:
+        new ListarCardapioController();
         TelaExibirCardapio telaCardapio = new TelaExibirCardapio();
         jDesktopPane1.add(telaCardapio);
         telaCardapio.setVisible(true);
-    }
+    }//GEN-LAST:event_btnExibirCardapioActionPerformed
+
 
     /**
      * @param args the command line arguments

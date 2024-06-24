@@ -4,8 +4,10 @@ view\TelaHistoricoClientes.class
 view\TelaCadastrarCliente$1.class
 view\TelaExibicaoMesas$3.class
 main\Main.class
+dao\ItensMenu.class
 main\Main$6.class
 view\TelaPedidos.class
+main\Main$9.class
 view\TelaFecharMesa$1.class
 main\Main$4.class
 view\TelaCadastrarCliente.class
@@ -22,7 +24,6 @@ view\TelaPedidos$1.class
 view\TelaFecharMesa.class
 model\Mesa.class
 main\Main$3.class
-view\TelaExibicaoMesas$5.class
 main\Main$8.class
 model\ItemMenu.class
 controller\ListarCardapioController.class

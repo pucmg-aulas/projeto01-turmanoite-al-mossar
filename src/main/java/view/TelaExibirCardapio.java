@@ -36,7 +36,7 @@ public class TelaExibirCardapio extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtItem = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtPreço = new javax.swing.JTextField();
+        txtPreco = new javax.swing.JTextField();
 
         setClosable(true);
 
@@ -82,9 +82,9 @@ public class TelaExibirCardapio extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Preço");
 
-        txtPreço.addActionListener(new java.awt.event.ActionListener() {
+        txtPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPreçoActionPerformed(evt);
+                txtPrecoActionPerformed(evt);
             }
         });
 
@@ -103,7 +103,7 @@ public class TelaExibirCardapio extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPreço, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(jButtonAdicionar)
                         .addGap(6, 6, 6)))
@@ -130,7 +130,7 @@ public class TelaExibirCardapio extends javax.swing.JInternalFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAdicionar)
-                    .addComponent(txtPreço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -158,9 +158,9 @@ public class TelaExibirCardapio extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtItemActionPerformed
 
-    private void txtPreçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPreçoActionPerformed
+    private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPreçoActionPerformed
+    }//GEN-LAST:event_txtPrecoActionPerformed
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
         // TODO add your handling code here:
@@ -178,13 +178,14 @@ public class TelaExibirCardapio extends javax.swing.JInternalFrame {
         return tableCardapio;
     }
 
-    public JTextField getJtxtCapt() {
-        return txtPreço;
-    }
-
-    public JTextField getJtxtId() {
+    public JTextField getTxtItem() {
         return txtItem;
     }
+
+    public JTextField getTxtPreco() {
+        return txtPreco;
+    }
+
 
 
 
@@ -202,6 +203,6 @@ public class TelaExibirCardapio extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableCardapio;
     private javax.swing.JTextField txtItem;
-    private javax.swing.JTextField txtPreço;
+    private javax.swing.JTextField txtPreco;
     // End of variables declaration//GEN-END:variables
 }
