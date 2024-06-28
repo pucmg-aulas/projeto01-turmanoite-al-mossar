@@ -1,4 +1,9 @@
-public class ItemMenu {
+// src/model/ItemMenu.java
+package Model;
+
+import java.io.Serializable;
+
+public class ItemMenu implements Serializable {
     private String nome;
     private double preco;
 
@@ -13,5 +18,10 @@ public class ItemMenu {
 
     public double getPreco() {
         return preco;
+    }
+
+    @Override
+    public String toString() {
+        return nome + " - R$" + preco;
     }
 }
